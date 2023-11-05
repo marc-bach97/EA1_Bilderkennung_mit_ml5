@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <!-- Include the ml5.js library -->
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+
+    <title>EA 1 - Bilderkennung mit ml5Aufgabe</title>
+    <style>
+        .card{
+            margin-top: 10px;;
+        }
+
+        .card-img-top{
+            height: 250px;
+            object-fit: cover;
+        }
+        .col-sm-3{
+            padding-bottom: 10px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+              <li class="nav-item btn">
+                <a class="nav-link " aria-current="page" href="index.html">Praxisbeispiel</a>
+              </li>
+              <li class="nav-item btn">
+                <a class="nav-link " href="testing.html">Testergebnisse</a>
+              </li>
+              <li class="nav-item btn">
+                <a class="nav-link active" href="documentation.html">Dokumentation</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <br>
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h4 class="card-title">ml5</h4>
+            <p class="card-text">
+
+              Ich habe die ml5-Bibliothek verwendet, um ein Bildklassifizierungsmodell zu erstellen. ml5.js ist eine benutzerfreundliche Open-Source-Schnittstelle auf hoher Ebene zu TensorFlow.js, einer Bibliothek zur Verarbeitung GPU-beschleunigter mathematischer Operationen und zur Speicherverwaltung für Algorithmen für maschinelles Lernen.
+              <br>
+              Trained model : MobileNet
+              <br>
+              <figure class="figure">
+                <img src="./images/model_work.png" class="figure-img img-fluid rounded" style="width: 90%;" alt="...">
+                <figcaption class="figure-caption">Funktionsweise von ml5</figcaption>
+              </figure>
+            </p>
+          </div>
+        </div>
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h4 class="card-title">Plotly.js</h4>
+            <p class="card-text">
+              <div class="row">
+                <div class="col-sm-6">
+                  Ich habe Plotly.js verwendet, um die Klassifizierungsergebnisse, die ich aus dem trainierten Modell erhalte, darzustellen. Ich habe ein Kreisdiagramm verwendet, um die Konfidenzergebnisse anzuzeigen
+                  <br>
+                  Plotly.js ist eine Diagrammbibliothek mit über 40 Diagrammtypen
+                  <br>
+<pre class="bg-dark text-light rounded" style="margin: 5px;">
+
+  function plotData(labels,confidences,best_label,best_confidence){
+    var data = [{
+        values: confidences,
+        labels: labels,
+        hole: .4,
+        textinfo:'none',
+        type: 'pie'
+    }];
+
+    var layout = {
+        title: best_label+'<br> confidence :'+best_confidence+" %",
+        colorway : ['#0d0d0d', '#404040', '#666666', '#808080',
+          '#a6a6a6', '#bfbfbf', '#e6e6e6'],
+        showlegend: true,
+        legend: {"orientation": "h"}
+      };
+    var config = {responsive: true}
+    Plotly.newPlot('data_plot', data, layout,config);
+  }
+
+</pre>
+                </div>
+                <div class="col-sm-6">
+                  <figure class="figure">
+                    <img src="./images/plotty.png" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-center">Darstellung der Klassifizierungsergebnisse</figcaption>
+                  </figure>
+                </div>
+              </div>
+
+             
+              <br>
+              
+            </p>
+          </div>
+        </div>
+       
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

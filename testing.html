@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <!-- Include the ml5.js library -->
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+
+    <title>EA 1 - Bilderkennung mit ml5Aufgabe</title>
+    <style>
+        .card{
+            margin-top: 10px;;
+        }
+
+        .card-img-top{
+            height: 250px;
+            object-fit: cover;
+        }
+        .col-sm-3{
+            padding-bottom: 10px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+              <li class="nav-item btn">
+                <a class="nav-link " aria-current="page" href="index.html">Praxisbeispiel</a>
+              </li>
+              <li class="nav-item btn">
+                <a class="nav-link active" href="testing.html">Testergebnisse</a>
+              </li>
+              <li class="nav-item btn">
+                <a class="nav-link" href="documentation.html">Dokumentation</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <br>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    Die Testergebnisse des trainierten „MobileNet“-Modells zeigen ziemlich gute Ergebnisse. Es scheint, dass mehrere Faktoren das Verhalten und die Genauigkeit der Ergebnisse beeinflussen, z. B. ob das Bild ein oder mehrere Objekte enthält, die derselben Klasse angehören, und ob es genügend gibt Der <strong>Kontrast</strong> zwischen dem Objekt und seinem Hintergrund zeigt in den ersten drei Bildern, wie wichtig der <strong>Kontrast</strong> zwischen dem Objekt und seiner Umgebung im Klassifizierungsprozess ist.
+                </div>
+              </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/bird_2.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">jay</h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">99.43%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/bird_3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">spiny lobster, langouste, rock lobster, crawfish, crayfish, sea crawfish                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-danger">14.47%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/bird_4.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">chickadee</h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">92.87%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/char.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">folding chair</h6>
+                      <p class="card-text">Confidence: <span class="badge bg-danger">23.85%</span></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/green_lights.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">traffic light, traffic signal, stoplight</h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">74.67%</span></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/international.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">sax, saxophone                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">91.63%</span>
+                        </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/fan.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">electric fan, blower                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">76.29%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/lemon.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">lemon</h6>
+                      <p class="card-text">Confidence: <span class="badge bg-warning">66.157%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/mobile.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">cellular telephone, cellular phone, cellphone, cell, mobile phone                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-warning">40.43%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/telephone.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">radio, wireless                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-danger">18.44%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/wedding.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">groom, bridegroom                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">84.16%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/pens.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">ballpoint, ballpoint pen, ballpen, Biro                  </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-warning">64.085%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/train_2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">bullet train, bullet                    </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">81.30%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/bear.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">brown bear, bruin, Ursus arctos             </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-success">83.50%</span> </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card h-100" style="width: 100%;">
+                    <img src="./images/apples.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">banana                   </h6>
+                      <p class="card-text">Confidence: <span class="badge bg-danger">17.05%</span> </p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <br>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
